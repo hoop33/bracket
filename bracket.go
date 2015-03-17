@@ -60,6 +60,8 @@ func playGame(team1 int, team2 int) int {
 
 	diff := team2 - team1
 
+	// Note -- I'm just making up these percentages
+
 	// Go with upsets 13% of the time, unless it's a 1 seed vs 11 or lower
 	if !(team1 == 1 && diff > 10) && rand.Intn(100) < 13 {
 		return team2
@@ -70,8 +72,8 @@ func playGame(team1 int, team2 int) int {
 		return team2
 	}
 
-	// Higher seed wins 63% of the time
-	if rand.Intn(100) < 63 {
+  // Higher seed wins 53% + (5 * diff)
+  if rand.Intn(100) < (43 + (5 * diff)) {
 		return team1
 	}
 	return team2
